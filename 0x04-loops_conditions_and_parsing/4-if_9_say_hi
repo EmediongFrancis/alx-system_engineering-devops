@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Script to print "Best School" 10 times but "Hi" on the 9th round.
+
+i=0;
+
+while ((i < 10))
+do
+    echo "Best School"
+    ((i++))
+    if ((i == 9))
+    then
+	echo "Hi"
+    fi
+done
