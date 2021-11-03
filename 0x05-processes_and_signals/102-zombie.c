@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 /**
- * infinite_while - creates infinite loop to hang program.
+ * infinite_while - creates an infinite loop to make the program hang
  * Return: always 0
  */
 int infinite_while(void)
@@ -16,7 +16,7 @@ int infinite_while(void)
 }
 
 /**
- * main - creates five zombie processes.
+ * main - creates 5 zombie processes
  * Return: always 0
  */
 int main(void)
