@@ -13,7 +13,7 @@ What are the 2 signals that cannot be ignored
 
 ```
 ### Requirements
- ### General
+### General
  
  ```
 Allowed editors: vi, vim, emacs
