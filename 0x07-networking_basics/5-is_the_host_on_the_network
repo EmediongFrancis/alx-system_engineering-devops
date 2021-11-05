@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Pings an IP address in the network
+# Pings an IP address in the network.
 
 if [ "$1" ]; then
 ping -c 5 "$1"
