@@ -1,5 +1,7 @@
 # Configuration Management. 
 
+This project deals with the configuration management of the systems using Puppet.
+
 ## Background Context
 
 When I was working for SlideShare, I worked on an auto-remediation tool called Skynet that monitored, scaled and fixed Cloud infrastructure. I was using a parallel job-execution system called MCollective that allowed me to execute commands to one or multiple servers at the same time. I could apply an action to a selected set of servers by applying a filter such as the server’s hostname or any other metadata we had (server type, server environment…). At some point, a bug was present in my code that sent nil to the filter method.
@@ -39,3 +41,15 @@ You do not need to attempt to upgrade versions. This project is simply a set of 
 ```
 $ gem install puppet-lint
 ```
+
+### Tasks
+
++ [x] 0\. Using Puppet, create a file in /tmp. <br/>
+    + Requirements:
+        + File path is `/tmp/school`.
+        + File permission is `0744`.
+        + File owner is `www-data`.
+        + File group is `www-data`.
+        + File contains `I love Puppet`.
+
++ [x] 1\. 
