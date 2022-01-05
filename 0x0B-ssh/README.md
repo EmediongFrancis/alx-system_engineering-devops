@@ -9,6 +9,7 @@ Note: Your server is configured with an Ubuntu 20.04 LTS environment.
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+
     What is a server
     Where servers usually live
     What is SSH
