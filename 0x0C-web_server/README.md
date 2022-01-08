@@ -4,8 +4,9 @@
 
 In this project, some of the tasks will be graded on 2 aspects:
 
-* Is your web-01 server configured according to requirements
-* Does your answer file contain a Bash script that automatically performs commands to configure an Ubuntu machine to fit requirements (meaning without any human intervention)<br>
+* Is your web-01 server configured according to requirements?
+* Does your answer file contain a Bash script that automatically performs commands to configure an Ubuntu machine to fit requirements (meaning without any human intervention)?
+<br>
 For example, if I need to create a file /tmp/test containing the string hello world and modify the configuration of Nginx to listen on port 8080 instead of 80, I can use emacs on my server to create the file and to modify the Nginx configuration file /etc/nginx/sites-enabled/default.
 
 But my answer file would contain:
@@ -26,5 +27,6 @@ Tips: to test your answer Bash script, feel free to reproduce the checker enviro
 * start an ubuntu:16.04 Docker container
 * run your script on it
 * see how it behaves
-<br> Check out the Docker concept page for more info about how to manipulate containers.
+<br> 
+Check out the Docker concept page for more info about how to manipulate containers.
 
