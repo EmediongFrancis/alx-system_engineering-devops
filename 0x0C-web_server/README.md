@@ -36,18 +36,18 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 ### General
 
-What is the main role of a web server
-What is a child process
-Why web servers usually have a parent process and child processes
+What is the main role of a web server<br>
+What is a child process<br>
+Why web servers usually have a parent process and child processes<br>
 What are the main HTTP requests
 
 ### DNS
 
-What DNS stands for
+What DNS stands for<br>
 What is DNS main role
 ### DNS Record Types
 
-A
-CNAME
-TXT
+A<br>
+CNAME<br>
+TXT<br>
 MX
