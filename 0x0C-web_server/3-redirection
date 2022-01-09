@@ -27,10 +27,10 @@ ServerConf=\
         }
 }"
 
-sudo bash -c "echo -e '$ServerConf' > /etc/nginx/sites-enabled/default"
+bash -c "echo -e '$ServerConf' > /etc/nginx/sites-enabled/default"
 
 if [ "$(pgrep -c nginx)" -le 0 ]; then
-        sudo service nginx start
+        service nginx start
 else
-        sudo service nginx restart
+        service nginx restart
 fi
