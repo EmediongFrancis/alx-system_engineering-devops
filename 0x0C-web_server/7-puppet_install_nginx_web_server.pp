@@ -1,21 +1,21 @@
 # Puppet manifest to set up nginx environment.
 
 package { 'nginx':
-  ensure => installed
+  ensure => installed,
 }
 
-file_line { 'redirect':
-  ensure => present,
+file_line { 'aaaaa':
+  ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'listen 80 default_server;',
-  line   => 'rewrite ^/redirect_me https://github.com/emediongfrancis permanent;'
+  line   => 'rewrite ^/redirect_me https://github.com/emediongfrancis permanent;',
 }
 
 file { '/var/www/html/index.html':
-  content => 'Hello World!'
+  content => 'Hello World!',
 }
 
 service { 'nginx':
   ensure  => running,
-  require => package['nginx']
+  require => Package['nginx'],
 }
