@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Script to Install and configure HAproxy on a server.
+
+sudo apt-get update
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.4 -y
+sudo apt-get install haproxy=2.4.\* -y
+
+# Configures LB.
+DomainName='emediongfrancis.tech'
+InitFile='/etc/default/haproxy'
+ConfigFile='/etc/haproxy/haproxy.cfg'
+
+HAProxyConfig=\
+"
+#--$DomainName-params-begin--
+backend $DomainName-backend
+    balance roundrobin
+    server web-01 34.139.205.239:80 check
+    server web-02 44.200.28.42:80 check
+    
+frontend $DomainName-frontend
+    bind *:80
+    mode http
+
+    default_backend $DomainName-backend
+#--$DomainName-params-end--
+"
+
+[ -f "$InitFile" ] || sudo touch "$InitFile"
+[ -f "$ConfigFile" ] || sudo touch "$ConfigFile"
+
+ConfigText=$(grep -Eco "$DomainName-backend" < "$ConfigFile")
+
+if [ "$(grep -Eco '^ENABLED=[01]$' < $InitFile)" -gt 0 ]; then
+    sudo sed -i 's/^ENABLED=0$/Enabled=1/' "$InitFile"
+else
+    echo 'ENABLED=1' | sudo tee -a "$InitFile"
+fi
+
+if [ "$ConfigText" -eq 0 ]; then
+    echo "$HAProxyConfig" | sudo tee -a "$ConfigFile"
+else
+    start="#--$DomainName-params-begin--"
+    end="#--$DomainName-params-end--"
+    a=$(grep -onE "$start" < "$ConfigFile" | cut -d : -f1)
+	b=$(grep -onE "$end" < "$ConfigFile" | cut -d : -f1)
+	a=$((a - 1))
+	b=$((b + 1))
+	sed -i "$a,$b"d "$ConfigFile"
+	echo -en "$HAProxyConfig" >> $ConfigFile
+fi
+
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+	service haproxy start
+else
+	service haproxy restart
+fi
