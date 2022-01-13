@@ -16,6 +16,7 @@ backend web_servers
     
 frontend lb
     bind *:80
+    mode http
     default_backend web_servers
 "
 
