@@ -47,12 +47,12 @@ else
 	b=$(grep -onE "$end" < "$ConfigFile" | cut -d : -f1)
 	a=$((a - 1))
 	b=$((b + 1))
-	sed -i "$a,$b"d "$ConfigFile"
-	echo -en "$HAProxyConfig" >> $ConfigFile
+	sudo sed -i "$a,$b"d "$ConfigFile"
+	echo -en "$HAProxyConfig" | sudo tee -a $ConfigFile
 fi
 
 if [ "$(pgrep -c haproxy)" -le 0 ]; then
-	service haproxy start
+	sudo service haproxy start
 else
-	service haproxy restart
+	sudo service haproxy restart
 fi
