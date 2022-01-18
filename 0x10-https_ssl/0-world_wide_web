@@ -2,9 +2,9 @@
 # Digs info about subdomains.
 
 DomainInfo () {
-    A_RECORD=$(dig "$2"."$1" | awk '/ANSWER SECTION:/{getline;print;}')
-    REC_TYPE=$(echo "$A_RECORD" | cut -d' ' -f 4)
-    IP=$(echo "$A_RECORD" | cut -d' ' -f 5)
+    A_RECORD=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | grep -v 'ANSWER SECTION:')
+    REC_TYPE=$(echo "$A_RECORD" | awk '{print $4}')
+    IP=$(echo "$A_RECORD" | awk '{print $5}')
     echo "The subdomain $2 is a $REC_TYPE record and points to $IP"
 }
 
