@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # Prints the current user.
+
 whoami
 
