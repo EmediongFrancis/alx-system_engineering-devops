@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Task 1, but shorter.
-sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
-chown nginx:nginx /etc/nginx/ -R
-chmod +rw /etc/nginx/nginx.conf
+chmod 644 /etc/nginx/nginx.conf
+sed -Ei 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
 pkill apache2
-su -c 'service nginx start' nginx
+su nginx -s /bin/bash -c 'service nginx restart'
 
