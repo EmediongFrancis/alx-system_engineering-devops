@@ -32,7 +32,7 @@ def getData():
                                                           TotalTasks))
 
     for task in TaskDescription:
-        print(f'\t{task}')
+        print('\t {}'.format(task))
 
 
 if __name__ == '__main__':
