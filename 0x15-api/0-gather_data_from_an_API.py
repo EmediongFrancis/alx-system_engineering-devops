@@ -4,32 +4,32 @@
     Gathers data from an API.
 '''
 
-import requests as req
-from sys import argv as arg
+import requests
+from sys import argv
 
 
 def getData():
     '''
         Gets data from an API.
     '''
-    ListOfUsers = req.get('https://jsonplaceholder.typicode.com/users').json()
-    ListOfTodos = req.get('https://jsonplaceholder.typicode.com/todos').json()
-    TOTAL_NUMBER_OF = 0
-    NUMBER_OF_DONE_TASKS = 0
-    TASK_TITLE = []
-    for user in ListOfUsers:
-        if user.get('id') == int(arg[1]):
+    users = requests.get('https://jsonplaceholder.typicode.com/users')
+    for user in users.json():
+        if user.get('id') == int(argv[1]):
             EMPLOYEE_NAME = user.get('name')
             break
-    for todo in ListOfTodos:
-        if todo.get('userId') == int(arg[1]):
-            TOTAL_NUMBER_OF += 1
+    todos = requests.get('https://jsonplaceholder.typicode.com/todos')
+    NUMBER_OF_DONE_TASKS = 0
+    TOTAL_NUMBER_OF_TASKS = 0
+    TASK_TITLE = []
+    for todo in todos.json():
+        if todo.get('userId') == int(argv[1]):
+            TOTAL_NUMBER_OF_TASKS += 1
             if todo.get('completed') is True:
                 NUMBER_OF_DONE_TASKS += 1
                 TASK_TITLE.append(todo.get('title'))
-    print('Employee {} is done with tasks({}/{}):'.format(EMPLOYEE_NAME,
+    print("Employee {} is done with tasks({}/{}):".format(EMPLOYEE_NAME,
                                                           NUMBER_OF_DONE_TASKS,
-                                                          TOTAL_NUMBER_OF))
+                                                          TOTAL_NUMBER_OF_TASKS))
 
     for task in TASK_TITLE:
         print(f'\t{task}')
