@@ -16,7 +16,7 @@ def getData():
     ListOfTodos = req.get('https://jsonplaceholder.typicode.com/todos').json()
     TOTAL_NUMBER_OF_TASKS = 0
     NUMBER_OF_DONE_TASKS = 0
-    TaskDescription = []
+    TASK_TITLE = []
     for user in ListOfUsers:
         if user.get('id') == int(arg[1]):
             EMPLOYEE_NAME = user.get('name')
@@ -26,12 +26,12 @@ def getData():
             TOTAL_NUMBER_OF_TASKS += 1
             if todo.get('completed') is True:
                 NUMBER_OF_DONE_TASKS += 1
-                TaskDescription.append(todo.get('title'))
+                TASK_TITLE.append(todo.get('title'))
     print('Employee {} is done with tasks({}/{}):'.format(EMPLOYEE_NAME,
                                                           NUMBER_OF_DONE_TASKS,
                                                           TOTAL_NUMBER_OF_TASKS))
 
-    for task in TaskDescription:
+    for task in TASK_TITLE:
         print('\t {}'.format(task))
 
 
