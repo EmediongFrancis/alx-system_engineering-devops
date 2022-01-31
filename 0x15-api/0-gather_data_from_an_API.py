@@ -40,4 +40,4 @@ if __name__ == "__main__":
         for todo in js_todo:
             TASK_TITLE = todo.get('title')
             if todo.get("completed"):
-                print(f"\t{TASK_TITLE}")
+                print("\t {}".format(TASK_TITLE))
