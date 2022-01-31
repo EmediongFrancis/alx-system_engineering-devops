@@ -8,38 +8,15 @@ if __name__ == "__main__":
     import json
     from requests import get
 
-    User = "https://jsonplaceholder.typicode.com/users?id={}".format(id)
-    Todo = "https://jsonplaceholder.typicode.com/todos?userId={}".format(id)
+    url = "https://jsonplaceholder.typicode.com/"
+    users = get(url + "users").json()
 
-    user = get(User)
-    todo = get(Todo)
-
-    try:
-        Employee = user.json()
-        Tasks = todo.json()
-    except ValueError:
-        print("Not a valid JSON.")
-
-    if Employee and Tasks:
-        data = {}
-        userNames = {}
-        for user in userNames:
-            userID = user.get("id")
-            userName = user.get("username")
-            data[userID] = []
-            userNames[userID] = userName
-
-        for task in Tasks:
-            TaskStatus = task.get("completed")
-            TaskTitle = task.get("title")
-            uID = task.get("userId")
-            dictInfo = {
-                "task": TaskTitle,
-                "completed": TaskStatus,
-                "username": userNames.get(uID)
-            }
-            if data.get(uID):
-                data.get(uID).append(dictInfo)
-
-        with open("todo_all_employees.json", "w", newline='') as jsonfile:
-            json.dump(data, jsonfile)
+    with open("todo_all_employees.json", "w") as jsonfile:
+        json.dump({
+            u.get("id"): [{
+                "task": t.get("title"),
+                "completed": t.get("completed"),
+                "username": u.get("username")
+            } for t in get(url + "todos",
+                           params={"userId": u.get("id")}).json()]
+            for u in users}, jsonfile)
