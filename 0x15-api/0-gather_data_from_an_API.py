@@ -4,30 +4,36 @@
     Gathers data from an API.
 '''
 
-import re
-import requests
-import sys
+import requests as req
+from sys import argv as arg
 
 
-API_URL = 'https://jsonplaceholder.typicode.com'
-'''The API's URL.'''
+def getData():
+    '''
+        Gets data from an API.
+    '''
+    ListOfUsers = req.get('https://jsonplaceholder.typicode.com/users').json()
+    ListOfTodos = req.get('https://jsonplaceholder.typicode.com/todos').json()
+    TotalTasks = 0
+    TotalCompletedTasks = 0
+    TaskDescription = []
+    for user in ListOfUsers:
+        if user.get('id') == int(arg[1]):
+            Employee = user.get('name')
+            break
+    for todo in ListOfTodos:
+        if todo.get('userId') == int(arg[1]):
+            TotalTasks += 1
+            if todo.get('completed') is True:
+                TotalCompletedTasks += 1
+                TaskDescription.append(todo.get('title'))
+    print('Employee {} is done with tasks({}/{}):'.format(Employee,
+                                                          TotalCompletedTasks,
+                                                          TotalTasks))
+
+    for task in TaskDescription:
+        print(f'\t{task}')
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            user_res = requests.get('{}/users/{}'.format(API_URL, id)).json()
-            todos_res = requests.get('{}/todos'.format(API_URL)).json()
-            user_name = user_res.get('name')
-            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
-            todos_done = list(filter(lambda x: x.get('completed'), todos))
-            print(
-                'Employee {} is done with tasks({}/{}):'.format(
-                    user_name,
-                    len(todos_done),
-                    len(todos)
-                )
-            )
-            for todo_done in todos_done:
-                print('\t {}'.format(todo_done.get('title')))
+    getData()
