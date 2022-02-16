@@ -11,7 +11,6 @@ def recurse(subreddit, hot_list=[]):
         articles for a given subreddit.
     '''
     import requests
-    import sys
 
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {'User-Agent': 'Mozilla/5.0'}
