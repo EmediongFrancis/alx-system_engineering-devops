@@ -1,6 +1,6 @@
 # Postmortem
 
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2F%40guilmeister%2Fpostmortem-example-2905a73c351b&psig=AOvVaw1Wau-_xLZbVvHeLPAVvjPy&ust=1645477122160000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNDq45OWj_YCFQAAAAAdAAAAABAD"/>
+![Debugging](https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2F%40guilmeister%2Fpostmortem-example-2905a73c351b&psig=AOvVaw1Wau-_xLZbVvHeLPAVvjPy&ust=1645477122160000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNDq45OWj_YCFQAAAAAdAAAAABAD")
 
 ## Issue Summary
 
