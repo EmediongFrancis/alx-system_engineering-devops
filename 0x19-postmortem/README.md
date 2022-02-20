@@ -29,9 +29,9 @@ To avoid this mistake, update the permissions of the `/var/www/html/wp-settings.
 
 Follow the methods below to deal with this type of problem:
 
-    Make sure the server is up and running by sending a request to it. curl 127.0.0.1 is an example.
-    Verify that all of the relevant processes (mysql, nginx, apache, PHP) are running. `ps aux`, for example.
-    When a request comes in, debug the web server process. `strace PHP` is an example.
-    Read each message on the screen.
-    Solve the issue.
+* Make sure the server is up and running by sending a request to it. curl 127.0.0.1 is an example.
+* Verify that all of the relevant processes (mysql, nginx, apache, PHP) are running. `ps aux`, for example.
+* When a request comes in, debug the web server process. `strace PHP` is an example.
+* Read each message on the screen.
+* Solve the issue.
  
