@@ -34,3 +34,4 @@ Follow the methods below to deal with this type of problem:
     When a request comes in, debug the web server process. `strace PHP` is an example.
     Read each message on the screen.
     Solve the issue.
+ 
